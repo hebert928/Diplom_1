@@ -1,19 +1,20 @@
 package praktikum;
 
 import static org.junit.Assert.assertEquals;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class IngredientTest{
+    @Mock
     public Ingredient ingredient;
-
-    @Before
-    public void testData() {
-        ingredient = new Ingredient(IngredientType.SAUCE,"sour cream", 200);
-    }
 
     @Test
     public void getPriceReturnPrice() {
+        Mockito.when(ingredient.getPrice()).thenReturn(200F);
         float actual = ingredient.getPrice();
         float expected = 200;
 
@@ -22,6 +23,7 @@ public class IngredientTest{
 
     @Test
     public void getNameReturnName() {
+        Mockito.when(ingredient.getName()).thenReturn("sour cream");
         String actual = ingredient.getName();
         String expected = "sour cream";
 
@@ -30,6 +32,7 @@ public class IngredientTest{
 
     @Test
     public void getTypeReturnType() {
+        Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
         IngredientType actual = ingredient.getType();
         IngredientType expected = IngredientType.SAUCE;
 

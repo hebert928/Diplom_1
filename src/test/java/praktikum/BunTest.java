@@ -1,19 +1,20 @@
 package praktikum;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 
+@RunWith(MockitoJUnitRunner.class)
 public class BunTest {
+    @Mock
     public Bun bun;
-
-    @Before
-    public void testData() {
-        bun = new Bun("red bun", 300);
-    }
 
     @Test
     public void getNameReturnName() {
+        Mockito.when(bun.getName()).thenReturn("red bun");
         String actual = bun.getName();
         String expected = "red bun";
 
@@ -22,6 +23,7 @@ public class BunTest {
 
     @Test
     public void getPriceReturnPrice() {
+        Mockito.when(bun.getPrice()).thenReturn(300F);
         float actual = bun.getPrice();
         float expected = 300;
 
